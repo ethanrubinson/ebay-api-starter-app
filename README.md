@@ -84,3 +84,21 @@ After you've built the sample, you can run it with the following command:
 java -jar target/ebay-api-demo-0.0.1-SNAPSHOT.jar
 ```
 
+You'll need to allow Chrome to accept self-signed SSL certificates for localhost. Enter the following in your navbar and flip the setting to "Enabled".
+
+```
+chrome://flags/#allow-insecure-localhost
+```
+
+### Get an Application Token
+
+https://localhost:11443/v1/auth/app_token
+
+### Get a User Authorization URL
+
+https://localhost:11443/v1/auth/user_authorization_url
+
+### Get a User Token
+
+https://localhost:11443/v1/auth/user_token
+
