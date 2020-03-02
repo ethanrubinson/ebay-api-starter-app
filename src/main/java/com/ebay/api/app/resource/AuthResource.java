@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import com.ebay.api.app.context.Scope;
 import com.ebay.api.app.response.ExtendedOAuthResponse;
 import com.ebay.api.app.response.Message;
+import com.ebay.api.app.response.UserAuthorizationUrlResponse;
 import com.ebay.api.client.auth.oauth2.OAuth2Api;
 import com.ebay.api.client.auth.oauth2.model.Environment;
 import com.ebay.api.client.auth.oauth2.model.OAuthResponse;
@@ -55,11 +56,10 @@ public class AuthResource {
     try {
       final URI userAuthUrl = new URI(EBAY_AUTH_API.generateUserAuthorizationUrl(Environment.PRODUCTION,
           Scope.ALL_SCOPES, Optional.empty()));
-
       if (redirect) {
         return Response.temporaryRedirect(userAuthUrl).build();
       } else {
-        return Response.ok().entity(userAuthUrl).build();
+        return Response.ok().entity(new UserAuthorizationUrlResponse(userAuthUrl)).build();
       }
 
     } catch (Exception unexpectedEx) {
